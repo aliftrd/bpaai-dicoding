@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.github.aliftrd.sutori.ui.story.StoryFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_story" >
+        <action
+            android:id="@+id/action_home_fragment_to_addStoryFragment"
+            app:destination="@id/addStoryFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_detailStoryFragment"
+            app:destination="@id/detailStoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/setting_fragment"
+        android:name="com.github.aliftrd.sutori.ui.setting.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/addStoryFragment"
+        android:name="com.github.aliftrd.sutori.ui.story.add.AddStoryFragment"
+        android:label="fragment_add_story"
+        tools:layout="@layout/fragment_add_story" />
+    <fragment
+        android:id="@+id/detailStoryFragment"
+        android:name="com.github.aliftrd.sutori.ui.story.detail.DetailStoryFragment"
+        android:label="fragment_detail_story"
+        tools:layout="@layout/fragment_detail_story" >
+        <argument
+            android:name="story"
+            app:argType="com.github.aliftrd.sutori.data.story.dto.StoryItem" />
+    </fragment>
+
+</navigation>
