@@ -1,9 +1,5 @@
 package com.github.aliftrd.sutori.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.github.aliftrd.sutori.R
@@ -11,14 +7,11 @@ import com.github.aliftrd.sutori.base.BaseActivity
 import com.github.aliftrd.sutori.databinding.ActivityMainBinding
 import com.github.aliftrd.sutori.utils.ext.gone
 import com.github.aliftrd.sutori.utils.ext.show
-import java.util.Locale
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getViewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
-    override fun initIntent() {
-        //
-    }
+    override fun initIntent() = Unit
 
     override fun initUI() {
         val navHostBottomBar = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -37,15 +30,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    override fun initAction() {
-        //
-    }
+    override fun initAction() = Unit
 
-    override fun initProcess() {
-        //
-    }
+    override fun initProcess() = Unit
 
-    override fun initObserver() {
-        //
-    }
+    override fun initObserver() = Unit
 }
