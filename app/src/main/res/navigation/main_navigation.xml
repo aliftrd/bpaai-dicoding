@@ -3,39 +3,89 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/home_fragment">
+    app:startDestination="@+id/splash_fragment">
 
     <fragment
-        android:id="@+id/home_fragment"
-        android:name="com.github.aliftrd.sutori.ui.story.StoryFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_story" >
+        android:id="@+id/splash_fragment"
+        android:name="com.github.aliftrd.sutori.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_home_fragment_to_addStoryFragment"
-            app:destination="@id/addStoryFragment" />
+            android:id="@+id/action_splash_fragment_to_home_fragment"
+            app:destination="@id/home_fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/splash_fragment"
+            app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_home_fragment_to_detailStoryFragment"
-            app:destination="@id/detailStoryFragment" />
+            android:id="@+id/action_splash_fragment_to_login_fragment"
+            app:destination="@id/login_fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/splash_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/setting_fragment"
         android:name="com.github.aliftrd.sutori.ui.setting.SettingFragment"
         android:label="@string/title_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_setting_fragment_to_login_fragment"
+            app:destination="@id/login_fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/home_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
     <fragment
-        android:id="@+id/addStoryFragment"
+        android:id="@+id/home_fragment"
+        android:name="com.github.aliftrd.sutori.ui.story.StoryFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_story">
+        <action
+            android:id="@+id/action_home_fragment_to_add_story_fragment"
+            app:destination="@id/add_story_fragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_detail_story_fragment"
+            app:destination="@id/detail_story_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_story_fragment"
         android:name="com.github.aliftrd.sutori.ui.story.add.AddStoryFragment"
         android:label="fragment_add_story"
         tools:layout="@layout/fragment_add_story" />
+
     <fragment
-        android:id="@+id/detailStoryFragment"
+        android:id="@+id/detail_story_fragment"
         android:name="com.github.aliftrd.sutori.ui.story.detail.DetailStoryFragment"
         android:label="fragment_detail_story"
-        tools:layout="@layout/fragment_detail_story" >
+        tools:layout="@layout/fragment_detail_story">
         <argument
             android:name="story"
             app:argType="com.github.aliftrd.sutori.data.story.dto.StoryItem" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.github.aliftrd.sutori.ui.login.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_login_fragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_login_fragment_to_register_fragment"
+            app:destination="@id/register_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/register_fragment"
+        android:name="com.github.aliftrd.sutori.ui.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_register_fragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
     </fragment>
 
 </navigation>
