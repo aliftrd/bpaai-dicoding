@@ -29,6 +29,10 @@
     <string name="title_change_language">Change Language</string>
     <string name="login_success">Login Success</string>
     <string name="register_success">Register Success</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="maps_title" translatable="false">Maps</string>
+    <string name="retry">Retry</string>
+    <string name="normal_type" translatable="false">Normal</string>
+    <string name="satellite_type" translatable="false">Satellite</string>
+    <string name="terrain_type" translatable="false">Terrain</string>
+    <string name="hybrid_type" translatable="false">Hybrid</string>
 </resources>

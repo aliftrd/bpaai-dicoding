@@ -28,7 +28,7 @@ class AddStoryViewModel(private val repository: StoryRepository) : ViewModel() {
 
         viewModelScope.launch {
             val dto = AddStoryRequest(multipartBody, requestBody)
-            repository.upload(dto).collect { it ->
+            repository.upload(dto).collect {
                 _addStoryResult.value = it
             }
         }

@@ -6,6 +6,11 @@
         android:title="@string/title_home" />
 
     <item
+        android:id="@+id/story_maps_fragment"
+        android:icon="@drawable/ic_map"
+        android:title="@string/maps_title" />
+
+    <item
         android:id="@+id/setting_fragment"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_setting" />

@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
@@ -14,7 +13,6 @@ import com.github.aliftrd.sutori.base.BaseFragment
 import com.github.aliftrd.sutori.data.lib.ApiResponse
 import com.github.aliftrd.sutori.databinding.FragmentAddStoryBinding
 import com.github.aliftrd.sutori.utils.CameraHelper
-import com.github.aliftrd.sutori.utils.PreferenceManager
 import com.github.aliftrd.sutori.utils.ext.disabled
 import com.github.aliftrd.sutori.utils.ext.enabled
 import com.github.aliftrd.sutori.views.CustomLoadingDialog
