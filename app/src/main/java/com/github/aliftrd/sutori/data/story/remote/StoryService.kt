@@ -14,10 +14,13 @@ interface StoryService {
     @GET("stories")
     suspend fun getAll(
         @Query("page")
-        page: Int,
+        page: Int?,
 
         @Query("size")
-        size: Int,
+        size: Int?,
+
+        @Query("location")
+        location: Int?
     ): StoryResponse
 
     @Multipart

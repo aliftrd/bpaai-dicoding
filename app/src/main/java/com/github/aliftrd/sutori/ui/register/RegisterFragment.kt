@@ -1,10 +1,7 @@
 package com.github.aliftrd.sutori.ui.register
 
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

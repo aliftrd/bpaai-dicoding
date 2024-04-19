@@ -1,27 +1,25 @@
 package com.github.aliftrd.sutori.ui.story
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.aliftrd.sutori.data.lib.ApiResponse
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.github.aliftrd.sutori.data.story.StoryRepository
 import com.github.aliftrd.sutori.data.story.dto.GetStoryParam
-import com.github.aliftrd.sutori.data.story.dto.StoryResponse
-import kotlinx.coroutines.launch
+import com.github.aliftrd.sutori.data.story.dto.StoryItem
 
 class StoryViewModel(private val repository: StoryRepository) : ViewModel() {
-    private val page: Int = 1
-    private val size: Int = 5
+    private val _story = MutableLiveData<PagingData<StoryItem>>()
+    val story: LiveData<PagingData<StoryItem>> = _story
 
-    private val _story = MutableLiveData<ApiResponse<StoryResponse>>()
-    val story: LiveData<ApiResponse<StoryResponse>> by lazy { _story }
-
-    fun get() {
-        viewModelScope.launch {
-            repository.getAll(GetStoryParam(page, size)).collect { it ->
+    fun getStory() {
+        repository.getAll(GetStoryParam(size = 5))
+            .cachedIn(viewModelScope)
+            .observeForever {
                 _story.value = it
             }
-        }
     }
 }

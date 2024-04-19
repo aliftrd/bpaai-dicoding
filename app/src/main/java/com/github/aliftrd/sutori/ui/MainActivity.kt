@@ -20,9 +20,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.bottomNavigationView.setupWithNavController(navControllerBottomBar)
         navControllerBottomBar.addOnDestinationChangedListener {_, destination,_ ->
             val isHomeFragment = destination.id == R.id.home_fragment
+            val isMapFragment = destination.id == R.id.story_maps_fragment
             val isSettingFragment = destination.id == R.id.setting_fragment
 
-            if (isHomeFragment || isSettingFragment) {
+            if (isHomeFragment || isMapFragment || isSettingFragment) {
                 binding.bottomNavigationView.show()
             } else {
                 binding.bottomNavigationView.gone()

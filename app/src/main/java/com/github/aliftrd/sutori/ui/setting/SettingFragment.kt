@@ -5,18 +5,15 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.github.aliftrd.sutori.base.BaseFragment
 import com.github.aliftrd.sutori.databinding.FragmentSettingBinding
-import com.github.aliftrd.sutori.di.feature.authModule
-import com.github.aliftrd.sutori.di.preferenceModule
-import com.github.aliftrd.sutori.ui.login.LoginActivity
-import com.github.aliftrd.sutori.utils.PreferenceManager
+import com.github.aliftrd.sutori.R
 import org.koin.android.ext.android.inject
-import org.koin.core.context.loadKoinModules
-import org.koin.core.context.unloadKoinModules
 
 class SettingFragment : BaseFragment<FragmentSettingBinding>() {
-    private val prefs: PreferenceManager by inject()
+    private val settingViewModel: SettingViewModel by inject()
+
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,21 +34,10 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
             }
             actionLogout.setOnClickListener {
-                prefs.clearAllPreferences()
-
-                reloadModule()
-
-                startActivity(Intent(requireContext(), LoginActivity::class.java))
-                requireActivity().finish()
+                settingViewModel.logout()
+                findNavController().navigate(R.id.action_setting_fragment_to_login_fragment)
             }
         }
-    }
-
-    private fun reloadModule() {
-        unloadKoinModules(preferenceModule)
-        loadKoinModules(preferenceModule)
-        unloadKoinModules(authModule)
-        loadKoinModules(authModule)
     }
 
     override fun initProcess() {

@@ -72,7 +72,10 @@
         android:label="LoginFragment">
         <action
             android:id="@+id/action_login_fragment_to_home_fragment"
-            app:destination="@id/home_fragment" />
+            app:destination="@id/home_fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_login_fragment_to_register_fragment"
             app:destination="@id/register_fragment" />
@@ -87,5 +90,10 @@
             android:id="@+id/action_register_fragment_to_login_fragment"
             app:destination="@id/login_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/story_maps_fragment"
+        android:name="com.github.aliftrd.sutori.ui.story.map.StoryMapsFragment"
+        android:label="fragment_story_maps"
+        tools:layout="@layout/fragment_story_maps" />
 
 </navigation>

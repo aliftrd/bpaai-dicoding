@@ -26,4 +26,5 @@
     <string name="title_change_language">Ganti Bahasa</string>
     <string name="login_success">Login berhasil</string>
     <string name="register_success">Pendaftaran berhasil</string>
+    <string name="retry">Coba Lagi</string>
 </resources>

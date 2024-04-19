@@ -3,15 +3,14 @@ package com.github.aliftrd.sutori.ui.story
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.aliftrd.sutori.data.story.dto.StoryItem
 import com.github.aliftrd.sutori.databinding.LayoutStoryItemBinding
-import com.shashank.sony.fancytoastlib.FancyToast
 
-class StoryAdapter: ListAdapter<StoryItem, StoryAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class StoryAdapter: PagingDataAdapter<StoryItem, StoryAdapter.ListViewHolder>(DIFF_CALLBACK) {
     class ListViewHolder(private val binding: LayoutStoryItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: StoryItem) {
             with(binding) {
@@ -20,8 +19,8 @@ class StoryAdapter: ListAdapter<StoryItem, StoryAdapter.ListViewHolder>(DIFF_CAL
                 tvDescription.text = item.description
 
                 root.setOnClickListener {
-                    val navigation = StoryFragmentDirections.actionHomeFragmentToDetailStoryFragment(item)
-                    root.findNavController().navigate(navigation)
+                    val action = StoryFragmentDirections.actionHomeFragmentToDetailStoryFragment(item)
+                    root.findNavController().navigate(action)
                 }
             }
         }
@@ -33,8 +32,10 @@ class StoryAdapter: ListAdapter<StoryItem, StoryAdapter.ListViewHolder>(DIFF_CAL
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val user = getItem(position)
-        holder.bind(user)
+        val story = getItem(position)
+        if (story != null) {
+            holder.bind(story)
+        }
     }
 
     companion object {

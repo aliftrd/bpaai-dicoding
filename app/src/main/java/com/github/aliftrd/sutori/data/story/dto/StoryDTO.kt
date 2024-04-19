@@ -1,6 +1,8 @@
 package com.github.aliftrd.sutori.data.story.dto
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.github.aliftrd.sutori.data.lib.BaseResponse
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -13,7 +15,9 @@ data class StoryResponse(
 ) : BaseResponse()
 
 @Parcelize
+@Entity(tableName = "stories")
 data class StoryItem(
+    @PrimaryKey
     @field:SerializedName("id")
     val id: String,
 
@@ -37,8 +41,9 @@ data class StoryItem(
 ): Parcelable
 
 data class GetStoryParam(
-    val page: Int,
-    val size: Int,
+    val page: Int? = null,
+    val size: Int? = null,
+    val location: Int? = 0,
 )
 
 class AddStoryResponse(): BaseResponse()
